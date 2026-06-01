@@ -1,0 +1,12 @@
+# YOLOv8 leaf validation config
+path: ../ai-models/datasets/detection  # dataset root dir
+train: images/train  # train images (relative to path)
+val: images/val      # val images (relative to path)
+
+# Classes: mapping leaf classes and a non-leaf background target
+names:
+  0: maize_leaf
+  1: cassava_leaf
+  2: cocoa_leaf
+  3: tomato_leaf
+  4: non_leaf_object
