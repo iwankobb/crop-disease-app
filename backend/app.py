@@ -17,7 +17,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["MAX_CONTENT_LENGTH"] = int(os.getenv("MAX_UPLOAD_SIZE", 16777216))
 
 # Initialize extensions
-CORS(app, origins=os.getenv("CORS_ORIGINS", "http://localhost:5173"))
+CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 from extensions import db, jwt
 db.init_app(app)

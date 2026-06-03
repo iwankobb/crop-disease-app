@@ -3,10 +3,40 @@ from flask_jwt_extended import jwt_required, get_jwt_identity
 from werkzeug.utils import secure_filename
 import os
 import uuid
+import time
+from functools import wraps
 from extensions import db
 from models.prediction import Prediction
 
 prediction_bp = Blueprint('prediction', __name__)
+
+# In-memory store for rate limiting: { ip_address: [timestamp1, timestamp2, ...] }
+RATE_LIMIT_STORE = {}
+
+def rate_limit(limit=10, period=60):
+    """Lightweight in-memory rate limiter to protect expensive AI routes"""
+    def decorator(f):
+        @wraps(f)
+        def wrapped(*args, **kwargs):
+            ip = request.remote_addr
+            now = time.time()
+            
+            if ip not in RATE_LIMIT_STORE:
+                RATE_LIMIT_STORE[ip] = []
+                
+            # Filter out timestamps older than the rate limit period
+            RATE_LIMIT_STORE[ip] = [t for t in RATE_LIMIT_STORE[ip] if now - t < period]
+            
+            if len(RATE_LIMIT_STORE[ip]) >= limit:
+                return jsonify({
+                    "success": False,
+                    "error": "Rate limit exceeded. Please wait before submitting another scan."
+                }), 429
+                
+            RATE_LIMIT_STORE[ip].append(now)
+            return f(*args, **kwargs)
+        return wrapped
+    return decorator
 
 # Allowed image extensions
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'webp'}
@@ -16,6 +46,7 @@ def allowed_file(filename):
 
 @prediction_bp.route('/api/predict', methods=['POST'])
 @jwt_required()
+@rate_limit(limit=10, period=60) # Protect this expensive AI route from spam
 def predict():
     """Disease detection API"""
     # Check if image exists
@@ -117,9 +148,17 @@ def get_history():
 
 @prediction_bp.route('/api/uploads/<filename>', methods=['GET'])
 def serve_upload(filename):
-    """Retrieve uploaded images securely"""
+    """Retrieve uploaded images securely, preventing directory traversal"""
+    # Block directory traversal attacks (e.g. filename contains '..')
+    if ".." in filename or filename.startswith("/") or filename.startswith("\\"):
+        return jsonify({"success": False, "error": "Invalid file access format"}), 400
+        
+    safe_name = secure_filename(filename)
+    if not safe_name or safe_name != filename:
+        return jsonify({"success": False, "error": "Invalid file access format"}), 400
+        
     upload_dir = os.path.join(os.getcwd(), 'uploads')
-    return send_from_directory(upload_dir, filename)
+    return send_from_directory(upload_dir, safe_name)
 
 @prediction_bp.route('/api/health', methods=['GET'])
 def health():
