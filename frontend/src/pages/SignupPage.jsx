@@ -30,7 +30,7 @@ export default function SignupPage({ setUser }) {
     setError(null)
 
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/signup', {
+      const response = await axios.post('https://crop-disease-app-2.onrender.com/api/auth/signup', {
         username,
         email,
         password

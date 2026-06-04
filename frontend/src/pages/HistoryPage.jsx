@@ -21,7 +21,7 @@ export default function HistoryPage() {
     setError(null)
     try {
       const token = localStorage.getItem('token')
-      const response = await axios.get('http://localhost:5000/api/predictions/history', {
+      const response = await axios.get('https://crop-disease-app-2.onrender.com/api/predictions/history', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -172,7 +172,7 @@ export default function HistoryPage() {
                       {/* Leaf Image Thumbnail */}
                       <div className="w-20 h-20 rounded-xl overflow-hidden bg-[#030805] shrink-0 border border-emerald-500/10">
                         <img 
-                          src={`http://localhost:5000${scan.image_url}`} 
+                          src={`https://crop-disease-app-2.onrender.com${scan.image_url}`} 
                           alt="Analyzed leaf" 
                           className="w-full h-full object-cover"
                           onError={(e) => {

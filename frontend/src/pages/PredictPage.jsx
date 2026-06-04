@@ -135,7 +135,7 @@ export default function PredictPage() {
       setActiveStep(3)
       const token = localStorage.getItem('token')
       const response = await axios.post(
-        'http://localhost:5000/api/predict',
+        'https://crop-disease-app-2.onrender.com/api/predict',
         formData,
         {
           headers: {
