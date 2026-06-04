@@ -57,10 +57,10 @@ export default function HistoryPage() {
         <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-10">
           <div>
             <h1 className="text-4xl font-extrabold tracking-tight bg-gradient-to-r from-[#00e699] to-[#10b981] bg-clip-text text-transparent">
-              Historical Diagnostics
+              Scan History
             </h1>
             <p className="text-sm text-slate-400 mt-1.5 font-medium">
-              Analyze previously scanned crops, disease outbreaks, and local treatment timelines.
+              Track past diagnoses, symptoms, and organic remedies.
             </p>
           </div>
           <button
@@ -72,7 +72,7 @@ export default function HistoryPage() {
           </button>
         </div>
 
-        {/* Diagnostic Stats Header */}
+        {/* Stats Header */}
         {!loading && !error && history.length > 0 && (
           <motion.div
             initial={{ opacity: 0, y: 15 }}
@@ -84,11 +84,11 @@ export default function HistoryPage() {
               <span className="block text-2xl font-black text-slate-100 mt-1">{totalScans}</span>
             </div>
             <div className="p-4 rounded-2xl border border-emerald-500/20 bg-emerald-950/15 text-center text-[#10b981] shadow-xl">
-              <span className="block text-[10px] uppercase text-[#10b981]/50 font-bold tracking-wider">Healthy Crops</span>
+              <span className="block text-[10px] uppercase text-[#10b981]/50 font-bold tracking-wider">Healthy Scans</span>
               <span className="block text-2xl font-black mt-1">{healthyScans}</span>
             </div>
             <div className="p-4 rounded-2xl border border-amber-500/20 bg-amber-950/15 text-center text-amber-300 shadow-xl">
-              <span className="block text-[10px] uppercase text-amber-300/50 font-bold tracking-wider">Diseased Leaves</span>
+              <span className="block text-[10px] uppercase text-amber-300/50 font-bold tracking-wider">Diseased Scans</span>
               <span className="block text-2xl font-black mt-1">{diseasedScans}</span>
             </div>
           </motion.div>
@@ -114,7 +114,7 @@ export default function HistoryPage() {
         {loading && (
           <div className="flex flex-col items-center justify-center py-20 text-slate-400">
             <RefreshCw className="w-8 h-8 text-[#10b981] animate-spin mb-4" />
-            <p className="text-sm font-semibold tracking-wider">Loading historical diagnostics...</p>
+            <p className="text-sm font-semibold tracking-wider">Loading scan history...</p>
           </div>
         )}
 
@@ -137,8 +137,8 @@ export default function HistoryPage() {
               <Leaf className="w-6 h-6 animate-pulse text-[#10b981]/50" />
             </div>
             <h3 className="text-lg font-bold text-slate-300">No scans recorded yet</h3>
-            <p className="text-xs text-slate-550 mt-1 max-w-sm font-medium">
-              Your historical diagnostic reports will list here once you run crop disease evaluations.
+            <p className="text-xs text-slate-500 mt-1 max-w-sm font-medium">
+              Your scan history will appear here once you perform a crop health diagnostic.
             </p>
             <Link
               to="/predict"
@@ -182,13 +182,13 @@ export default function HistoryPage() {
                         />
                       </div>
 
-                      {/* Diagnostic details */}
+                      {/* Scan details */}
                       <div className="flex-1 min-w-0">
                         <div className="flex justify-between items-start gap-1">
                           <span className={`text-[9px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ${
                             scan.is_healthy 
                               ? 'bg-emerald-500/10 text-[#10b981] border border-emerald-500/20' 
-                              : 'bg-amber-500/10 text-amber-400 border border-amber-500/20'
+                               : 'bg-amber-500/10 text-amber-400 border border-amber-500/20'
                           }`}>
                             {scan.is_healthy ? 'Healthy' : 'Diseased'}
                           </span>

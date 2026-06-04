@@ -13,7 +13,7 @@ export default function HomePage() {
       <div className="container mx-auto px-4 py-20 relative z-10 max-w-5xl text-center">
         <div className="flex flex-col items-center space-y-8">
           
-          {/* Production-Grade Deployment Badge */}
+          {/* AI-Powered Badge */}
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -21,7 +21,7 @@ export default function HomePage() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/20 bg-emerald-950/20 text-[#10b981] text-xs font-bold shadow-inner tracking-wider uppercase"
           >
             <Activity className="w-3.5 h-3.5 animate-pulse text-[#10b981]" />
-            <span>Production-Grade Computer Vision Deployment</span>
+            <span>AI-Powered Plant Pathology</span>
           </motion.div>
 
           {/* Main Title Heading */}
@@ -31,9 +31,9 @@ export default function HomePage() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.1] max-w-4xl"
           >
-            Instant Intelligence for{" "}
+            Protect Your Harvest with{" "}
             <span className="block mt-3 bg-gradient-to-r from-[#00e699] to-[#10b981] bg-clip-text text-transparent">
-              Crop Disease Diagnostics
+              Smart Crop Diagnostics
             </span>
           </motion.h1>
 
@@ -44,7 +44,7 @@ export default function HomePage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-slate-400 text-base md:text-lg leading-relaxed max-w-2xl text-center font-medium"
           >
-            Protect your agricultural yield with optimized machine learning pipelines. Scan crops via field hardware telemetry or local webcam feeds for instant insight vectors.
+            Monitor crop health, identify diseases early, and access organic remedies. Scan crop leaves instantly to protect your field's yield.
           </motion.p>
 
           {/* Deploy Button */}
@@ -58,7 +58,7 @@ export default function HomePage() {
               to="/predict" 
               className="py-4 px-10 bg-[#0f9668] hover:bg-[#0ca370] text-white font-bold rounded-xl transition duration-200 shadow-xl shadow-emerald-950/30 flex items-center gap-2.5 group cursor-pointer text-base"
             >
-              <span>Deploy Control Terminal</span>
+              <span>Start Diagnostic Scan</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
@@ -69,7 +69,7 @@ export default function HomePage() {
       <div className="container mx-auto px-4 py-12 relative z-10 max-w-5xl border-t border-emerald-500/10 pt-16 mb-16">
         <div className="grid md:grid-cols-3 gap-6">
           
-          {/* Card 1: Sub-Second Diagnostics */}
+          {/* Card 1: Instant Analysis */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -80,14 +80,14 @@ export default function HomePage() {
               <Zap className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-bold mb-2 text-slate-200">
-              Sub-Second Diagnostics
+              Instant Analysis
             </h3>
             <p className="text-slate-400 text-sm leading-relaxed font-medium">
-              Run double-tier deep inference pipelines locally. Detect and classify anomalies with extreme speed and precision.
+              Get diagnostic results in seconds. Identify crop disease anomalies with state-of-the-art AI speed and precision.
             </p>
           </motion.div>
 
-          {/* Card 2: YOLOv8 Validation */}
+          {/* Card 2: Smart Validation */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -98,14 +98,14 @@ export default function HomePage() {
               <Eye className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-bold mb-2 text-slate-200">
-              Dual-Model Validation
+              Smart Validation
             </h3>
             <p className="text-slate-400 text-sm leading-relaxed font-medium">
-              Validate crop leaves instantly via YOLOv8, rejecting invalid frames before MobileNetV2 evaluates surface health vectors.
+              Verify crop leaves automatically. Our double-model validation system ensures highly accurate diagnoses.
             </p>
           </motion.div>
 
-          {/* Card 3: Deep Insights */}
+          {/* Card 3: Scan History */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -116,10 +116,10 @@ export default function HomePage() {
               <BarChart2 className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-bold mb-2 text-slate-200">
-              Analytical Dashboard
+              Scan History
             </h3>
             <p className="text-slate-400 text-sm leading-relaxed font-medium">
-              Analyze historic diagnostic matrices, track active crop pathology trends, and manage local farm treatment profiles.
+              Keep track of past diagnoses, monitor seasonal crop health trends, and manage recommended organic treatment plans.
             </p>
           </motion.div>
 

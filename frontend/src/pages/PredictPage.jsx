@@ -149,7 +149,7 @@ export default function PredictPage() {
       setActiveStep(4) // Complete
       setResult(response.data)
     } catch (err) {
-      setError(err.response?.data?.error || 'AI diagnostic pipeline failed. Make sure the server is online.')
+      setError(err.response?.data?.error || 'Analysis failed. Make sure the backend server is online.')
       setActiveStep(0)
     } finally {
       setUploading(false)
@@ -180,13 +180,13 @@ export default function PredictPage() {
             className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-emerald-500/20 bg-emerald-950/20 text-[#10b981] text-xs font-bold mb-3"
           >
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Dual-Model Local Pipeline</span>
+            <span>AI Diagnostics</span>
           </motion.div>
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-[#00e699] to-[#10b981] bg-clip-text text-transparent">
-            AI Crop Leaf Diagnostician
+            Identify Crop Diseases
           </h1>
           <p className="text-sm md:text-base text-slate-400 mt-2 max-w-xl mx-auto font-medium">
-            Upload an image or scan with your camera. YOLOv8 validates the leaf shape, and MobileNetV2 diagnoses historical diseases.
+            Upload a photo of a crop leaf or use your camera to scan. Our AI model will automatically analyze and identify potential diseases.
           </p>
         </div>
 
@@ -215,7 +215,7 @@ export default function PredictPage() {
             <div className="p-6 rounded-2xl border border-emerald-500/10 bg-[#060e0a]/85 backdrop-blur-xl shadow-xl">
               <h2 className="text-lg font-bold text-slate-200 mb-4 flex items-center gap-2">
                 <Activity className="w-5 h-5 text-[#10b981]" />
-                Select Scan Capture
+                Choose your scanning method
               </h2>
 
               {/* Webcam active state */}
@@ -304,7 +304,7 @@ export default function PredictPage() {
                         className="flex items-center gap-2 py-2.5 px-6 rounded-xl border border-emerald-500/10 hover:border-emerald-500/30 hover:bg-emerald-950/10 text-sm text-slate-300 hover:text-[#10b981] transition cursor-pointer font-bold"
                       >
                         <Camera className="w-4 h-4" />
-                        Use Camera Scanner
+                        Scan with Camera
                       </button>
                     </div>
                   )}
@@ -323,7 +323,7 @@ export default function PredictPage() {
                     className="w-full py-3.5 bg-[#0f9668] hover:bg-[#0ca370] text-white font-bold rounded-xl transition shadow-lg shadow-emerald-950/30 cursor-pointer flex items-center justify-center gap-2 text-sm"
                   >
                     <Leaf className="w-5 h-5" />
-                    Start Local AI Diagnostics
+                    Analyze Crop Health
                   </button>
                 </motion.div>
               )}
@@ -333,14 +333,14 @@ export default function PredictPage() {
             {uploading && (
               <div className="p-6 rounded-2xl border border-emerald-500/10 bg-[#060e0a]/85 backdrop-blur-xl shadow-xl space-y-4">
                 <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-                  Processing Local AI Stages
+                  Analyzing Leaf Symptoms...
                 </h3>
                 
                 <div className="space-y-3.5">
                   {[
-                    { step: 1, label: "Uploading Image & Preprocessing", desc: "Checking file size and rescaling inputs" },
-                    { step: 2, label: "YOLOv8 Leaf Object Detection", desc: "Verifying leaf shape & rejecting backgrounds" },
-                    { step: 3, label: "MobileNetV2 Pathological Classification", desc: "Evaluating crop patterns using transfer learning" }
+                    { step: 1, label: "Preparing image", desc: "Uploading file and checking size" },
+                    { step: 2, label: "Verifying crop leaf shape", desc: "Checking leaf structure and visibility" },
+                    { step: 3, label: "Diagnosing crop health patterns", desc: "Scanning for disease anomalies" }
                   ].map((s) => {
                     const isDone = activeStep > s.step;
                     const isActive = activeStep === s.step;
@@ -418,7 +418,7 @@ export default function PredictPage() {
                     {/* Confidence Meter */}
                     <div className="mt-6 relative z-10">
                       <div className="flex justify-between items-center text-xs mb-2 font-bold text-slate-300">
-                        <span>AI Prediction Confidence</span>
+                        <span>Prediction Confidence</span>
                         <span>{(result.confidence * 100).toFixed(1)}%</span>
                       </div>
                       <div className="w-full h-2 rounded-full bg-[#030805] overflow-hidden">
@@ -432,7 +432,7 @@ export default function PredictPage() {
                         />
                       </div>
                       <p className="text-[10px] text-slate-500 mt-2 font-medium leading-relaxed">
-                        Confidence scores are evaluated locally using cross-entropy networks.
+                        Confidence scores are evaluated using trained model classification.
                       </p>
                     </div>
                   </div>
@@ -441,18 +441,18 @@ export default function PredictPage() {
                   <div className="p-6 rounded-2xl border border-emerald-500/10 bg-[#060e0a]/85 backdrop-blur-xl shadow-xl">
                     <h4 className="text-sm font-bold uppercase tracking-wider text-slate-450 mb-4 flex items-center gap-2">
                       <BookOpen className="w-4 h-4 text-[#10b981]" />
-                      Treatment Recommendations
+                      Remedy Guide
                     </h4>
                     
                     {result.is_healthy ? (
                       <div className="text-slate-300 text-sm leading-relaxed space-y-3">
                         <p className="font-medium">
-                          Your crop leaf appears highly healthy. Continue regular agricultural monitoring and maintain good soil health!
+                          Your crop leaf appears healthy. Continue regular monitoring and maintain good soil health!
                         </p>
                         <ul className="space-y-2 text-xs text-slate-500 list-disc pl-4 font-semibold">
                           <li>Ensure balanced watering schedules.</li>
                           <li>Inspect under leaf surfaces once a week.</li>
-                          <li>Apply nitrogen-rich compost to strengthen fibers.</li>
+                          <li>Apply organic compost to support strong growth.</li>
                         </ul>
                       </div>
                     ) : (
@@ -477,7 +477,7 @@ export default function PredictPage() {
                     className="w-full py-3.5 border border-emerald-500/10 bg-[#060e0a]/40 hover:bg-[#060e0a] text-slate-205 font-bold rounded-xl transition text-sm flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <RefreshCw className="w-4 h-4" />
-                    Diagnose Another Crop
+                    Scan Another Leaf
                   </button>
                 </motion.div>
               ) : (
@@ -492,10 +492,10 @@ export default function PredictPage() {
                     <Leaf className="w-6 h-6 text-[#10b981]/50" />
                   </div>
                   <h3 className="text-base font-bold text-slate-350">
-                    Awaiting Diagnostic Scan
+                    Awaiting Leaf Scan
                   </h3>
                   <p className="text-xs text-slate-500 max-w-[200px] mt-1 font-medium leading-relaxed">
-                    Please upload or capture a crop leaf image to initiate the AI inference process.
+                    Upload or capture a photo of a crop leaf to start the analysis.
                   </p>
                 </motion.div>
               )}

@@ -64,11 +64,11 @@ export default function SignupPage({ setUser }) {
           <div className="w-14 h-14 rounded-2xl bg-emerald-950/30 border border-emerald-500/20 flex items-center justify-center mb-5">
             <Leaf className="w-7 h-7 text-[#10b981]" />
           </div>
-          <h1 className="text-3xl font-bold tracking-tight text-white">
-            Provision Account
+          <h1 className="text-3xl font-bold tracking-tight text-white text-center">
+            Create your account
           </h1>
-          <p className="text-sm text-slate-500 mt-2 text-center font-medium">
-            Establish secure node traversal credentials
+          <p className="text-sm text-slate-400 mt-2 text-center font-medium">
+            Start detecting crop diseases and managing fields
           </p>
         </div>
 
@@ -88,8 +88,8 @@ export default function SignupPage({ setUser }) {
           
           {/* Username Input */}
           <div className="space-y-2">
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-400">
-              Username Vector
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-450">
+              Username
             </label>
             <div className="relative group">
               <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 group-focus-within:text-[#10b981] transition-colors">
@@ -101,15 +101,15 @@ export default function SignupPage({ setUser }) {
                 onChange={(e) => setUsername(e.target.value)}
                 required
                 className="w-full pl-12 pr-4 py-3 bg-[#030805]/80 border border-emerald-500/10 rounded-xl text-slate-100 placeholder-slate-650 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500/40 transition-all text-sm font-medium"
-                placeholder="choose a username"
+                placeholder="e.g. greenfarmer"
               />
             </div>
           </div>
 
           {/* Email Input */}
           <div className="space-y-2">
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-400">
-              Corporate Email
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-450">
+              Email Address
             </label>
             <div className="relative group">
               <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 group-focus-within:text-[#10b981] transition-colors">
@@ -121,15 +121,15 @@ export default function SignupPage({ setUser }) {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 className="w-full pl-12 pr-4 py-3 bg-[#030805]/80 border border-emerald-500/10 rounded-xl text-slate-100 placeholder-slate-650 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500/40 transition-all text-sm font-medium"
-                placeholder="operator@agrishield.ai"
+                placeholder="name@example.com"
               />
             </div>
           </div>
 
           {/* Password Input */}
           <div className="space-y-2">
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-400">
-              Security Hash Vector
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-455">
+              Password
             </label>
             <div className="relative group">
               <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 group-focus-within:text-[#10b981] transition-colors">
@@ -141,7 +141,7 @@ export default function SignupPage({ setUser }) {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 className="w-full pl-12 pr-4 py-3 bg-[#030805]/80 border border-emerald-500/10 rounded-xl text-slate-100 placeholder-slate-650 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500/40 transition-all text-sm font-medium"
-                placeholder="at least 6 characters"
+                placeholder="At least 6 characters"
                 minLength="6"
               />
             </div>
@@ -149,8 +149,8 @@ export default function SignupPage({ setUser }) {
 
           {/* Confirm Password Input */}
           <div className="space-y-2">
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-400">
-              Verify Hash Vector
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-455">
+              Confirm Password
             </label>
             <div className="relative group">
               <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 group-focus-within:text-[#10b981] transition-colors">
@@ -162,7 +162,7 @@ export default function SignupPage({ setUser }) {
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
                 className="w-full pl-12 pr-4 py-3 bg-[#030805]/80 border border-emerald-500/10 rounded-xl text-slate-100 placeholder-slate-650 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500/40 transition-all text-sm font-medium"
-                placeholder="repeat your password"
+                placeholder="Repeat your password"
               />
             </div>
           </div>
@@ -173,7 +173,7 @@ export default function SignupPage({ setUser }) {
             disabled={loading}
             className="w-full mt-2 py-4 px-4 bg-[#0f9668] hover:bg-[#0ca370] text-white font-bold rounded-xl transition duration-200 shadow-lg shadow-emerald-950/20 flex items-center justify-center gap-2 group cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-sm"
           >
-            <span>{loading ? 'Provisioning...' : 'Provision Account'}</span>
+            <span>{loading ? 'Creating account...' : 'Create Account'}</span>
             {!loading && <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />}
           </button>
         </form>
@@ -181,9 +181,9 @@ export default function SignupPage({ setUser }) {
         {/* Redirection link */}
         <div className="text-center mt-8 pt-6 border-t border-emerald-500/5">
           <p className="text-sm text-slate-500 font-medium">
-            Already verified?{' '}
+            Already have an account?{' '}
             <Link to="/login" className="text-[#10b981] font-bold hover:text-emerald-400 transition-colors ml-1">
-              Access Console
+              Sign in
             </Link>
           </p>
         </div>

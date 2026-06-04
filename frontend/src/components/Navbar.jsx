@@ -47,7 +47,7 @@ export default function Navbar({ user, setUser }) {
               }`}
             >
               <Sparkles className="w-4 h-4 shrink-0" />
-              <span>Detect</span>
+              <span>Scan Leaf</span>
               {isActive('/predict') && (
                 <motion.div 
                   layoutId="nav-underline" 
@@ -63,7 +63,7 @@ export default function Navbar({ user, setUser }) {
               }`}
             >
               <History className="w-4 h-4 shrink-0" />
-              <span>History</span>
+              <span>Scan History</span>
               {isActive('/history') && (
                 <motion.div 
                   layoutId="nav-underline" 

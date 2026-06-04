@@ -50,11 +50,11 @@ export default function LoginPage({ setUser }) {
           <div className="w-14 h-14 rounded-2xl bg-emerald-950/30 border border-emerald-500/20 flex items-center justify-center mb-5">
             <Leaf className="w-7 h-7 text-[#10b981]" />
           </div>
-          <h1 className="text-3xl font-bold tracking-tight text-white">
-            Terminal Access
+          <h1 className="text-3xl font-bold tracking-tight text-white text-center">
+            Sign in to AgriShield
           </h1>
-          <p className="text-sm text-slate-500 mt-2 text-center font-medium">
-            Authenticate security token session infrastructure
+          <p className="text-sm text-slate-400 mt-2 text-center font-medium">
+            Monitor crop health and access diagnostic tools
           </p>
         </div>
 
@@ -72,10 +72,10 @@ export default function LoginPage({ setUser }) {
 
         <form onSubmit={handleLogin} className="space-y-6">
           
-          {/* Email / Username Input (labeled CORPORATE EMAIL) */}
+          {/* Email / Username Input (labeled Email Address) */}
           <div className="space-y-2.5">
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-400">
-              Corporate Email
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-450">
+              Email or Username
             </label>
             <div className="relative group">
               <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 group-focus-within:text-[#10b981] transition-colors">
@@ -87,15 +87,15 @@ export default function LoginPage({ setUser }) {
                 onChange={(e) => setIdentifier(e.target.value)}
                 required
                 className="w-full pl-12 pr-4 py-3.5 bg-[#030805]/80 border border-emerald-500/10 rounded-xl text-slate-100 placeholder-slate-650 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500/40 transition-all text-sm font-medium"
-                placeholder="operator@agrishield.ai"
+                placeholder="name@example.com"
               />
             </div>
           </div>
 
-          {/* Password Input (labeled SECURITY HASH VECTOR) */}
+          {/* Password Input (labeled Password) */}
           <div className="space-y-2.5">
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-400">
-              Security Hash Vector
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-455">
+              Password
             </label>
             <div className="relative group">
               <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 group-focus-within:text-[#10b981] transition-colors">
@@ -112,23 +112,23 @@ export default function LoginPage({ setUser }) {
             </div>
           </div>
 
-          {/* Solid Green Access Console Button */}
+          {/* Solid Green Access Button */}
           <button
             type="submit"
             disabled={loading}
             className="w-full py-4 px-4 bg-[#0f9668] hover:bg-[#0ca370] text-white font-bold rounded-xl transition duration-200 shadow-lg shadow-emerald-950/20 flex items-center justify-center gap-2 group cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-sm"
           >
-            <span>{loading ? 'Authenticating...' : 'Access Console'}</span>
+            <span>{loading ? 'Signing in...' : 'Sign In'}</span>
             {!loading && <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />}
           </button>
         </form>
 
-        {/* Provision redirection prompt */}
+        {/* Signup redirection prompt */}
         <div className="text-center mt-8 pt-6 border-t border-emerald-500/5">
           <p className="text-sm text-slate-500 font-medium">
-            Unauthorized node traversal?{' '}
+            New to AgriShield?{' '}
             <Link to="/signup" className="text-[#10b981] font-bold hover:text-emerald-400 transition-colors ml-1">
-              Provision Account
+              Create an account
             </Link>
           </p>
         </div>
